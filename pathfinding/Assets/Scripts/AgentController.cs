@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,15 @@ using UnityEngine.AI;
 public class AgentController : MonoBehaviour
 {
     public Transform agentDest;
-    // Update is called once per frame
+    private NavMeshAgent _agent;
+
+    private void Awake()
+    {
+        _agent = GetComponent<NavMeshAgent>();
+    }
+
     void Update()
     {
-        var agent = GetComponent<NavMeshAgent>();
-        agent.destination = agentDest.position;
+        _agent.destination = agentDest.position;
     }
 }
